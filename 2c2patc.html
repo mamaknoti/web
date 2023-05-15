@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MamakNotify ATC Hideout</title>
+</head>
+
+<body style="background-color: #FAFAFA;">
+  <div style="font-family: sans-serif;" align=center>
+    <img src="./icon.png" style="width: 300px; height: 300px;">
+    <h1>MamakNotify ATC Hideout</h1>
+    <h2>2C2P: Redirecting you to payment...</h2>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function post(formAction) {
+        var form = document.createElement("form");
+        form.action = formAction;
+        form.method = "post";
+        form.target = "_blank"; // Open in a new window
+
+        var urlParams = new URLSearchParams(window.location.search);
+        urlParams.forEach(function (value, key) {
+          var input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+
+        form.submit();
+      }
+
+      // Call the function to populate the form fields with URL parameters and perform the post
+      post("https://t.2c2p.com/RedirectV3/payment");
+    });
+  </script>
+</body>
+
+</html>
